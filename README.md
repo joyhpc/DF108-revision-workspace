@@ -13,6 +13,7 @@
 
 ## 推荐入口
 
+- [`LLM_NAVIGATION.md`](LLM_NAVIGATION.md): 把 GitHub 链接交给其它 LLM 时，优先让它从这里开始读
 - [`00_task/revision_brief.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/00_task/revision_brief.md): 改版任务卡
 - [`02_design_evidence/source_vs_target_chip_check.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/source_vs_target_chip_check.md): 源芯片与目标芯片检查
 - [`04_final_reports/step1_application_validation_summary.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/step1_application_validation_summary.md): 本轮应用验证摘要
