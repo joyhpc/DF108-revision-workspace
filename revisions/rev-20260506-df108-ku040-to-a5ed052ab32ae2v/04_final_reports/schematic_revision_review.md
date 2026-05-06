@@ -19,6 +19,27 @@
 | intake_status | pass |
 | review_status | fail |
 
+### 判断模式
+
+| 字段 | 内容 |
+|---|---|
+| mode_id | main_controller_migration_precheck |
+| raw_review_status | fail |
+| interpreted_status | evidence_open |
+| headline | 原始工具输出有 40 个 ERROR，但在改版预审口径下被解释为 1 个工具问题、47 个边界/缺证项、0 个命名占位项、9 个封装/符号集成待办；当前不能据此判定原理图存在同等数量的设计错误。 |
+
+| 解释后计数 | 数量 |
+|---|---:|
+| confirmed_design_errors | 0 |
+| tool_issues | 1 |
+| boundary_or_missing_evidence | 47 |
+| part_naming_placeholders | 0 |
+| package_placeholders_or_unintegrated_symbols | 9 |
+| warnings_requiring_triage | 197 |
+
+本节是改版任务判断口径。下方 raw summary 仍保留工具原始输出，
+但不得把 raw ERROR 数量直接等同为已确认原理图设计错误。
+
 ### Checks
 
 ```json
@@ -6214,21 +6235,20 @@
 
 ### Artifacts
 
-- `workspace_task`: file:///home/ubuntu/workspace/agents/sch-review/data/inbox/task-20260506-df108-ku040-a5ed052ab32ae2v-intake.json
-- `intake_manifest`: sch-review://intake/DF108/task-20260506-df108-ku040-a5ed052ab32ae2v-intake
-- `engine_log`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/review/DF108_engine.log
-- `review_results`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/review/DF108_results.json
-- `revision_run_manifest`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/run_manifest.json
-- `revision_review_results`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/review_results.json
-- `revision_engine_log`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/engine.log
-- `revision_decision_summary`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/decision_summary.md
-- `revision_engineering_actions`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/engineering_actions.md
-- `revision_risk_register`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/risk_register.md
-- `revision_evidence_refs`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/evidence_refs.json
+- No artifacts recorded.
 
 ## 决策层
 
 ### Decision Summary
+
+- **headline**: 原始工具输出有 40 个 ERROR，但在改版预审口径下被解释为 1 个工具问题、47 个边界/缺证项、0 个命名占位项、9 个封装/符号集成待办；当前不能据此判定原理图存在同等数量的设计错误。
+- **interpreted_status**: evidence_open
+- **technical_layer**: raw counts: ERROR 40, WARNING 197, INFO 275, skipped 2。解释后：已确认设计错误 0，工具问题 1，边界/缺证项 47，命名占位项 0，封装/符号集成待办 9。
+- **decision_layer**: 当前应定义为证据未闭合/判断口径待补强，而不是设计已判错。优先处理 1 个工具问题、47 个边界/缺证项、0 个命名占位项、9 个封装/符号集成待办后复审。
+- **raw_review_status**: fail
+- **raw_headline**: 发现 40 个必须修复问题，建议在发板或发布前阻断闭环。
+
+### Raw Tool Decision Summary
 
 - **project_id**: DF108
 - **project_type**: board

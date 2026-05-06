@@ -2,15 +2,19 @@
 
 These questions must be answered before this can become a formal A5ED052AB32AE2V schematic review.
 
-## P0: Target Part Identity
+## P1: Target Part Naming
 
-1. Is `U9=A5EC052A B32A` a temporary placeholder for `A5ED052AB32AE2V`?
-2. If it is a placeholder, should the symbol value, BOM value, and PST netlist be regenerated with `A5ED052AB32AE2V` or an agreed normalized part string?
-3. If it is not a placeholder, is the actual design target now `A5EC052A B32A` instead of `A5ED052AB32AE2V`?
+User clarification: `U9=A5EC052A B32A` is currently treated as a temporary placeholder/name mismatch for the Agilex path. C-type and D-type package usage is unified at this stage, and the name will be corrected later.
 
-Why this matters:
+Remaining questions:
 
-`A5EC` has no HPS. `A5ED` is an FPGA SoC with quad HPS. The answer changes boot, reset, firmware update, MCU replacement, power sequencing, and control-plane architecture.
+1. What exact normalized string should be used in symbol value, BOM value, and PST export for `A5ED052AB32AE2V`?
+2. Which official Intel pinout / ordering-code document confirms that the placeholder package maps correctly to the final D-type target?
+3. Does the final design actually use HPS functions, or is HPS presence only a procurement / roadmap option?
+
+Why this still matters:
+
+The naming issue is no longer a P0 design-error claim for the current placeholder input. It still must be closed before formal release because `A5EC` and `A5ED` differ in HPS and ordering semantics.
 
 ## P0: KU040 Coexistence
 
@@ -61,4 +65,4 @@ Local opendatasheet currently provides strong evidence for `A5ED052A_B32A`, but 
 
 ## Suggested Next Prompt For Another LLM
 
-Given the context and facts above, first assess whether the current schematic input is valid for an `A5ED052AB32AE2V` review. Do not assume `A5EC052A B32A` is equivalent to `A5ED052AB32AE2V`. Separate hard facts from assumptions, and propose the minimum set of corrections or confirmations needed before a full schematic review.
+Given the context and facts above, first read `judgment_interpretation.md`. Treat the current input as a correct old schematic with a new Agilex package/scheme placeholder. Do not convert raw `errors=40` into confirmed design errors. Separate hard facts, user-stated task intent, placeholder TODOs, tool issues, missing evidence, and formal release blockers.

@@ -41,6 +41,16 @@
 | PST chip data contains old KU040 value | `VALUE='XCKU040-2FFVA1156I'` |
 | PST chip data contains new Agilex value as A5EC | `PART_NAME='A5EC052A B32A'`, `VALUE='A5EC052A B32A'` |
 
+## User Correction Facts
+
+| Fact | Value |
+|---|---|
+| old schematic baseline | user states it should be treated as correct for this task |
+| current Agilex state | new chip package/scheme added as placeholder |
+| C/D package handling | package unified at this stage |
+| name mismatch | to be corrected later |
+| judgment impact | do not convert raw review errors directly into confirmed schematic design errors |
+
 ## Opendatasheet Facts
 
 | Field | A5EC052A_B32A | A5ED052A_B32A |
@@ -66,4 +76,14 @@
 
 ## Most Important Interpretation
 
-The current schematic input cannot yet be treated as an `A5ED052AB32AE2V` review target. It currently contains `A5EC052A B32A`, and the `A5EC` vs `A5ED` distinction changes whether HPS exists.
+The raw review result must be interpreted through the revision precheck judgment mode:
+
+| Interpreted Field | Value |
+|---|---:|
+| confirmed design errors | 0 |
+| tool issues | 1 |
+| boundary / missing-evidence items | 47 |
+| package / symbol integration TODOs | 9 |
+| warnings requiring triage | 197 |
+
+The current schematic input cannot yet be treated as formal `A5ED052AB32AE2V` sign-off evidence. However, because the user clarified the current state is a package/scheme placeholder on a correct old schematic, the `A5EC` vs `A5ED` naming difference should be treated as a naming consistency TODO until official pinout/power/order-code evidence proves a real incompatibility.

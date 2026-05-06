@@ -1,5 +1,8 @@
 # Risk Register
 
+> Raw tool risk register. For this revision, read `judgment_interpretation.md` first.
+> The raw P0 items below are retained for evidence traceability, but the current judgment mode reclassifies them as: 0 confirmed design errors, 1 tool issue, 47 boundary/missing-evidence items, and 9 package/symbol integration TODOs.
+
 ## 1. RISK-001
 - **risk_id**: RISK-001
 - **severity**: ERROR

@@ -23,6 +23,17 @@ Current status: pre-review handoff. This is not schematic sign-off, board-releas
 | `03_open_questions.md` | Questions that must be resolved before treating this as an A5ED052AB32AE2V design review. |
 | `evidence_refs.json` | Machine-readable evidence index with paths, hashes, and line hints. |
 
+## Important Correction
+
+After the initial handoff was generated, the user clarified that the current input is a correct existing schematic with a new Agilex chip package/scheme added as a placeholder. C-type and D-type package usage is unified for this stage, and the part-name mismatch will be corrected later.
+
+Therefore, do not read the initial raw `review status = fail` and `errors = 40` as 40 confirmed schematic design errors. Read:
+
+- `../../03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/judgment_interpretation.md`
+- `../../02_design_evidence/judgment_mode_correction_20260506.md`
+
+before interpreting raw review output.
+
 ## How To Use
 
 For a short external LLM session, provide `01_design_context.md` and `02_key_facts.md`.
