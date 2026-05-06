@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Runtime-only schematic review sandbox. Canonical inputs and outputs are stored
+# in the revision workspace and should be committed separately.
+revisions/*/03_review_runs/*/runtime_repo/

@@ -1,0 +1,42 @@
+{
+  "schema_version": "sch-review.revision.run.v1",
+  "task_id": "task-20260506-df108-ku040-a5ed052ab32ae2v-intake",
+  "project_id": "DF108",
+  "workflow_id": "main_controller_migration",
+  "revision_id": "rev-20260506-df108-ku040-to-a5ed052ab32ae2v",
+  "revision_root": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v",
+  "review_run_root": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake",
+  "review_output_dir": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/review",
+  "data_dir": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/runtime_repo/data/DF108",
+  "command": [
+    "/usr/bin/python3",
+    "-m",
+    "src.cli",
+    "--repo-root",
+    "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/runtime_repo",
+    "review",
+    "DF108",
+    "--check",
+    "power_tree",
+    "--check",
+    "netlist",
+    "--check",
+    "bom",
+    "--check",
+    "constraints",
+    "--check",
+    "emc",
+    "-o",
+    "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/review",
+    "-f",
+    "json"
+  ],
+  "returncode": 0,
+  "checks": [
+    "power_tree",
+    "netlist",
+    "bom",
+    "constraints",
+    "emc"
+  ]
+}

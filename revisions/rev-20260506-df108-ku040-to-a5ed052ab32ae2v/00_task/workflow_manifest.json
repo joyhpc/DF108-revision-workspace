@@ -1,0 +1,56 @@
+{
+  "schema_version": "sch-review.revision.workflow.v1",
+  "project_id": "DF108",
+  "revision_id": "rev-20260506-df108-ku040-to-a5ed052ab32ae2v",
+  "workflow_id": "main_controller_migration",
+  "source_request": "DF108 原理图改版任务：在既有 DF108 原理图基础上新增主芯片方案，KU040 -> Agilex 5 A5ED052AB32AE2V，保持 8 路 FAKRA、POC、DPS、机壳和光口物理形态不变；当前原理图位于 Google Drive 文件夹 https://drive.google.com/drive/folders/1FLudfopFvV_cuZyTfbZZf27EL1GUJj6m?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto",
+  "workflow_reason": "主控/FPGA 平台迁移类改版，必须进入 Power Tree、配置/复位/boot 和外设保持 gate。",
+  "repo_root": "/home/ubuntu/hardware-projects/sch-review",
+  "prj_root": "/home/ubuntu/hardware-projects/prj",
+  "revision_root": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v",
+  "directory_policy": {
+    "name": "parallel_prj_workspace",
+    "prj_root_env": "SCH_REVIEW_PRJ_ROOT",
+    "default_prj_root_relative_to_repo_parent": "prj",
+    "revision_root_template": "{prj_root}/{project_id}/revisions/{revision_id}",
+    "invariant": [
+      "sch-review 是工具仓，只保存源码、规则、模板、协议和测试。",
+      "项目输入、中间生成物、运行报告和草稿文档必须写入平行 prj 工作区。",
+      "项目正式需求、正式设计决策、正式关闭结论必须回写项目 repo。",
+      "project-tracker 负责跨仓 gate 状态、同步和正式闭环编排。"
+    ],
+    "formal_authority": {
+      "project_repo": [
+        "requirements baseline",
+        "design baseline",
+        "traceability matrix",
+        "decision records",
+        "closure record"
+      ],
+      "sch_review": [
+        "workflow definitions",
+        "review rules",
+        "parser / checker code",
+        "evidence extraction",
+        "generated review reports"
+      ],
+      "prj_workspace": [
+        "raw inputs",
+        "immutable snapshots",
+        "intermediate evidence",
+        "run manifests",
+        "review outputs",
+        "draft final reports"
+      ]
+    }
+  },
+  "directories": {
+    "task": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/00_task",
+    "raw_inputs": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw",
+    "snapshot": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/snapshot",
+    "design_evidence": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence",
+    "review_runs": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs",
+    "final_reports": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports",
+    "archive": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/99_archive"
+  }
+}

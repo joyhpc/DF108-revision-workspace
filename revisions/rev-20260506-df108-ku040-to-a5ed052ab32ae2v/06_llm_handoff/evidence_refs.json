@@ -1,0 +1,109 @@
+{
+  "schema_version": "sch-review.llm_handoff.evidence_refs.v1",
+  "project_id": "DF108",
+  "revision_id": "rev-20260506-df108-ku040-to-a5ed052ab32ae2v",
+  "created_at": "2026-05-06T08:20:00Z",
+  "bundle_root": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff",
+  "evidence": [
+    {
+      "id": "EV-INPUT-ZIP",
+      "type": "downloaded_input",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/A38_MAIN_V1_2_A1_3_with_Agile_package_allegro.zip",
+      "source_name": "A38_MAIN_V1_2_A1_3 with Agile package allegro.zip",
+      "drive_file_id": "1EBJmVgv9b4UBjW6RR6rnBEblP9ZyhRI8",
+      "sha256": "d6509ce856b05ff043cd1b1d47d436fa32a987b4185eb59b1c83ca8092d4b4a8",
+      "supports": ["downloaded Drive input", "raw schematic export archive"]
+    },
+    {
+      "id": "EV-INTAKE-MANIFEST",
+      "type": "intake_manifest",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/snapshot/snapshots/DF108/task-20260506-df108-ku040-a5ed052ab32ae2v-intake/input_manifest.json",
+      "content_hash": "0a3121174ab594009795e44b25eec9c00ba0d8235062ac3bd36ba32aea49209a",
+      "validation_status": "pass",
+      "categories": {
+        "bom": 1,
+        "netlist": 3
+      },
+      "supports": ["intake passed", "BOM and PST netlist are present"]
+    },
+    {
+      "id": "EV-BOM-U9",
+      "type": "bom_line",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/A38_MAIN_V1_2_A1_3.BOM",
+      "line_hint": "item 126",
+      "excerpt": "126 1 U9 A5EC052A B32A",
+      "supports": ["current BOM has U9=A5EC052A B32A", "target mismatch with A5ED052AB32AE2V"]
+    },
+    {
+      "id": "EV-BOM-U14",
+      "type": "bom_line",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/A38_MAIN_V1_2_A1_3.BOM",
+      "line_hint": "item 129",
+      "excerpt": "129 1 U14 XCKU040-2FFVA1156I",
+      "supports": ["old KU040 is still present in current BOM"]
+    },
+    {
+      "id": "EV-PSTCHIP-KU040",
+      "type": "pstchip_excerpt",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/pstchip.dat",
+      "line_hint": "around line 6815",
+      "excerpt": "VALUE='XCKU040-2FFVA1156I'",
+      "supports": ["old KU040 is still present in PST chip data"]
+    },
+    {
+      "id": "EV-PSTCHIP-A5EC",
+      "type": "pstchip_excerpt",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/pstchip.dat",
+      "line_hint": "around line 12129",
+      "excerpt": "PART_NAME='A5EC052A B32A'; VALUE='A5EC052A B32A'",
+      "supports": ["current PST chip data has A5EC052A B32A", "target mismatch with A5ED052AB32AE2V"]
+    },
+    {
+      "id": "EV-OD-A5EC",
+      "type": "opendatasheet_export",
+      "path": "/home/ubuntu/knowledge/opendatasheet/data/sch_review_export/A5EC052A_B32A.json",
+      "sha256": "07dd0fbd198307e3cbc629d0313bdb7cf219c5a1f9be8f9e97f4f03272a616db",
+      "key_facts": {
+        "device_role": "FPGA",
+        "hps": "none",
+        "transceiver": true,
+        "crypto": false
+      },
+      "supports": ["A5EC has no HPS"]
+    },
+    {
+      "id": "EV-OD-A5ED",
+      "type": "opendatasheet_export",
+      "path": "/home/ubuntu/knowledge/opendatasheet/data/sch_review_export/A5ED052A_B32A.json",
+      "sha256": "65393d2fc8fcf03a6066b21f299e55e35e284068266f6c18c5f33f2f996f51b7",
+      "key_facts": {
+        "device_role": "FPGA SoC",
+        "hps": "quad",
+        "transceiver": true,
+        "crypto": true
+      },
+      "supports": ["A5ED has quad HPS", "A5ED is not equivalent to A5EC"]
+    },
+    {
+      "id": "EV-REVIEW-RESULTS",
+      "type": "review_results",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/review_results.json",
+      "summary": {
+        "status": "fail",
+        "engines": 6,
+        "errors": 40,
+        "warnings": 197,
+        "infos": 275,
+        "execution_errors": 1,
+        "skipped": 2
+      },
+      "supports": ["initial tool review completed", "review result is preliminary fail"]
+    },
+    {
+      "id": "EV-CHIP-CHECK",
+      "type": "derived_summary",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/source_vs_target_chip_check.md",
+      "supports": ["source-vs-target part mismatch summary"]
+    }
+  ]
+}
