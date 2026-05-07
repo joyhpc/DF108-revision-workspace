@@ -44,15 +44,12 @@ For the current `A5EC052A B32A` placeholder / Agilex 5 E-Series Group A interpre
 | LPDDR5 data rate | `3,733 Mbps/pin` |
 | x16 raw bandwidth | about `7.46 GB/s` |
 | x32 raw bandwidth | about `14.93 GB/s` |
+| Rev1 topology | 2 x `x32` LPDDR5 component groups |
+| Controller allocation | one LPDDR5 hard memory controller per group |
 
 Do not assume that higher EMIF parameter choices are valid for this exact device/package/speed grade. Confirm with Quartus EMIF IP, pin planner, final Intel/Altera documentation, and the selected LPDDR5 vendor datasheet.
 
-Recommended memory candidates:
-
-- LPDDR5 `x32`
-- LPDDR5 `2ch x16`
-
-The schematic should be planned so that LPDDR5 EMIF banks, byte lanes, RZQ, refclk, address/command lanes, and data lanes are legal before symbols are wired.
+The Rev1 schematic should be planned as `LPDDR5_CTRL0_X32` and `LPDDR5_CTRL1_X32`. Each group owns one x32 component resource domain and one hard memory controller. LPDDR5 EMIF banks, byte lanes, RZQ, refclk, address/command lanes, and data lanes must be proven legal before symbols are wired.
 
 ### LM5060
 
@@ -84,10 +81,12 @@ DC24V input
 
 External memory
   -> LPDDR5 hard memory controller
+  -> 2 groups of x32 LPDDR5 components
+  -> one controller per group
   -> target design capability 3,733 Mbps/pin
 ```
 
-The next required artifact is an `A5EC052A B32A resource allocation matrix` covering MIPI lanes, LPDDR5 EMIF banks, power sequencing, clock/reset dependencies, and final A5EC/A5ED naming cleanup.
+The current required artifact is `../02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv`, covering MIPI lanes, LPDDR5 EMIF banks, power sequencing, clock/reset dependencies, and final A5EC/A5ED naming cleanup.
 
 ## Source Files Used
 

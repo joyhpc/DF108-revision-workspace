@@ -97,10 +97,11 @@ The current schematic input cannot yet be treated as formal `A5ED052AB32AE2V` si
 | MIPI speed boundary | E-Series Group A: up to `3.5 Gbps/lane` for short/standard channel; use `2.5 Gbps/lane` for long/lossy channel until SI evidence proves otherwise |
 | memory change | DDR4 -> LPDDR5 |
 | LPDDR5 design target | `3,733 Mbps/pin` for current `A5EC052A B32A` / E-Series Group A interpretation |
+| LPDDR5 Rev1 topology | 2 groups of x32 LPDDR5 components; one LPDDR5 hard memory controller per group |
 | LPDDR5 raw bandwidth | `x16` about `7.46 GB/s`; `x32` about `14.93 GB/s` |
 | LPDDR5 caution | higher EMIF parameter choices are not automatically valid for the exact device/package/speed grade |
 | input power | migrate mature LM5060 front-end circuit |
 | LM5060 caution | reuse topology, but re-check UV/OV, current limit, MOSFET SOA, inrush, downstream capacitance, and PG/FLT sequencing |
-| next artifact | `A5EC052A B32A resource allocation matrix` covering MIPI, LPDDR5 EMIF, power, clock/reset, and final naming |
+| current artifact | `../02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv` covering MIPI, LPDDR5 EMIF, power, clock/reset, and final naming |
 
 Reference files used for this update came from the user-provided Drive folder `1LBmcH09JFtY-A9iW-TYNtksNjdZ7o8wS`, including Agilex 5 Device Overview, Device Data Sheet, EMIF IP User Guide, General-Purpose IO User Guide, MIPI D-PHY IP User Guide, and `altera-pbc-b32a-a5e.xlsx`.

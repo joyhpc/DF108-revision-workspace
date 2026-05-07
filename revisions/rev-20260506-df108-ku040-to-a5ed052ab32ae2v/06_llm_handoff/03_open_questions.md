@@ -61,10 +61,10 @@ Local opendatasheet currently provides strong evidence for `A5ED052A_B32A`, but 
 
 ## P1: LPDDR5 EMIF Closure
 
-1. Is the intended memory topology `x32` or `2ch x16`?
+1. Confirmed for Rev1: plan 2 groups of x32 LPDDR5 components; each group has one LPDDR5 hard memory controller.
 2. Which exact LPDDR5 component and vendor datasheet will be used?
-3. Does Quartus EMIF IP accept the exact A5EC device/package/speed grade at `3,733 Mbps/pin`?
-4. Are address/command lanes, data byte lanes, RZQ, refclk, reset, and bank voltage assignments legal in pin planner?
+3. Does Quartus EMIF IP accept two x32 LPDDR5 controller groups on the exact A5EC device/package/speed grade at `3,733 Mbps/pin`?
+4. For both controller groups, are address/command lanes, data byte lanes, RZQ, refclk, reset, and bank voltage assignments legal in pin planner?
 5. What lower FSP values should be used for bring-up before attempting the target rate?
 
 ## P1: LM5060 Migration Closure

@@ -123,6 +123,18 @@
         "LPDDR5 3,733 Mbps/pin target for current A5EC052A B32A / E-Series Group A interpretation",
         "LM5060 migration scope"
       ]
+    },
+    {
+      "id": "EV-RESOURCE-MATRIX-20260507",
+      "type": "resource_allocation_matrix",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv",
+      "supports": [
+        "MIPI lane map placeholder and evidence status",
+        "two x32 LPDDR5 groups with one hard memory controller per group",
+        "power sequencing placeholders for LM5060 migration and Agilex 5 + LPDDR5 rails",
+        "clock/reset/config resource placeholders",
+        "A5EC/A5ED naming cleanup tracking"
+      ]
     }
   ]
 }
