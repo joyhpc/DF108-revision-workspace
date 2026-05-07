@@ -27,9 +27,11 @@ Current status: pre-review handoff. This is not schematic sign-off, board-releas
 
 After the initial handoff was generated, the user clarified that the current input is a correct existing schematic with a new Agilex chip package/scheme added as a placeholder. C-type and D-type package usage is unified for this stage, and the part-name mismatch will be corrected later.
 
-Therefore, do not read the initial raw `review status = fail` and `errors = 40` as 40 confirmed schematic design errors. Read:
+Therefore, do not read the initial raw `review status = fail` and `errors = 40` as 40 confirmed schematic design errors. Read the current run entry first:
 
-- `../../03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/judgment_interpretation.md`
+- `../../04_final_reports/CURRENT.md`
+- `../../03_review_runs/RUN_INDEX.md`
+- `../../03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md`
 - `../../02_design_evidence/judgment_mode_correction_20260506.md`
 
 before interpreting raw review output.

@@ -9,13 +9,13 @@
 
 | 字段 | 内容 |
 |---|---|
-| task_id | task-20260507-df108-judgment-v2 |
+| task_id | task-20260506-df108-ku040-a5ed052ab32ae2v-intake |
 | status | succeeded |
 | project_id | DF108 |
 | revision_id | rev-20260506-df108-ku040-to-a5ed052ab32ae2v |
 | workflow_id | main_controller_migration |
 | revision_root | `/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v` |
-| review_run_root | `/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2` |
+| review_run_root | `/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake` |
 | intake_status | pass |
 | review_status | fail |
 
@@ -2937,7 +2937,7 @@
     "rule_id": "CONSTRAINT-NO-INPUT",
     "severity": "INFO",
     "category": "CONSTRAINT",
-    "location": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/runtime_repo/data/DF108",
+    "location": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/runtime_repo/data/DF108",
     "message": "未找到可检查的设计约束，约束冲突检查已跳过。提供 requirements.yaml 或 pipeline_result.design_constraints 后会启用。",
     "reference": "",
     "result_path": "results.constraint_checker.findings"
@@ -6235,19 +6235,7 @@
 
 ### Artifacts
 
-- `workspace_task`: file:///home/ubuntu/workspace/agents/sch-review/data/inbox/task-20260507-df108-judgment-v2.json
-- `intake_manifest`: sch-review://intake/DF108/task-20260507-df108-judgment-v2
-- `engine_log`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/review/DF108_engine.log
-- `review_results`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/review/DF108_results.json
-- `revision_run_manifest`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/run_manifest.json
-- `revision_review_results`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/review_results.json
-- `revision_engine_log`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/engine.log
-- `revision_decision_summary`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/decision_summary.md
-- `revision_judgment_interpretation`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/judgment_interpretation.json
-- `revision_judgment_interpretation_markdown`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md
-- `revision_engineering_actions`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/engineering_actions.md
-- `revision_risk_register`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/risk_register.md
-- `revision_evidence_refs`: file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/evidence_refs.json
+- No artifacts recorded.
 
 ## 决策层
 
@@ -9128,7 +9116,7 @@
    - source: constraint_checker
    - rule_id: CONSTRAINT-NO-INPUT
    - category: CONSTRAINT
-   - location: /home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/runtime_repo/data/DF108
+   - location: /home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/runtime_repo/data/DF108
    - title: 未找到可检查的设计约束，约束冲突检查已跳过。提供 requirements.yaml 或 pipeline_result.design_constraints 后会启用。
    - recommended_action: 人工确认该信息项是否需要转为设计约束或风险项。
    - decision_impact: CONSTRAINT 类信息项，需要人工判断是否影响当前设计目标。

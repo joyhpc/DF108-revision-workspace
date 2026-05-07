@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-05-06T08:06:55Z",
+  "updated_at": "2026-05-07T06:14:17Z",
   "projects": {
     "DF108": {
-      "latest": "task-20260506-df108-ku040-a5ed052ab32ae2v-intake",
+      "latest": "task-20260507-df108-judgment-v2",
       "versions": [
         {
           "version_id": "task-20260506-df108-ku040-a5ed052ab32ae2v-intake",
@@ -12,6 +12,16 @@
           "snapshot_path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/snapshot/snapshots/DF108/task-20260506-df108-ku040-a5ed052ab32ae2v-intake",
           "source_type": "local-dir",
           "label": "df108-ku040-a5ed052ab32ae2v-intake",
+          "validation_status": "pass",
+          "file_count": 4
+        },
+        {
+          "version_id": "task-20260507-df108-judgment-v2",
+          "content_hash": "0a3121174ab594009795e44b25eec9c00ba0d8235062ac3bd36ba32aea49209a",
+          "created_at": "2026-05-07T06:14:17Z",
+          "snapshot_path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/snapshot/snapshots/DF108/task-20260507-df108-judgment-v2",
+          "source_type": "local-dir",
+          "label": "df108-judgment-v2",
           "validation_status": "pass",
           "file_count": 4
         }

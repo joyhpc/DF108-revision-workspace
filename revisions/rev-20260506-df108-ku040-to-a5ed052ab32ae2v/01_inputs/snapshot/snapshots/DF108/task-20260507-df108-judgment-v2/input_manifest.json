@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "project_id": "DF108",
+  "version_id": "task-20260507-df108-judgment-v2",
+  "content_hash": "0a3121174ab594009795e44b25eec9c00ba0d8235062ac3bd36ba32aea49209a",
+  "created_at": "2026-05-07T06:14:17Z",
+  "snapshot_path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/snapshot/snapshots/DF108/task-20260507-df108-judgment-v2",
+  "sources": [
+    {
+      "source_type": "local-dir",
+      "uri": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake",
+      "owner": "codex-rerun",
+      "label": "df108-judgment-v2",
+      "google_drive_url": "file:///home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake",
+      "google_drive_file_id": "",
+      "google_drive_revision": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "A38_MAIN_V1_2_A1_3.BOM",
+      "source_path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/A38_MAIN_V1_2_A1_3.BOM",
+      "category": "bom",
+      "size_bytes": 16251,
+      "sha256": "aa2af48b42b666f75a3fcd78e09999cbcc23667dfd59f3946b3e3efb060f6d6e"
+    },
+    {
+      "path": "pstchip.dat",
+      "source_path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/pstchip.dat",
+      "category": "netlist",
+      "size_bytes": 390814,
+      "sha256": "a6c826b1f75d82149a7266cf50f4d1f9696f2d2e454e6d6e4398ccf1cc5644e3"
+    },
+    {
+      "path": "pstxnet.dat",
+      "source_path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/pstxnet.dat",
+      "category": "netlist",
+      "size_bytes": 1267740,
+      "sha256": "b083b8e87414d14a256ca99bcb90ac65aeca1da1ba434dd05b556143051ffa47"
+    },
+    {
+      "path": "pstxprt.dat",
+      "source_path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/01_inputs/raw/normalized_for_intake/pstxprt.dat",
+      "category": "netlist",
+      "size_bytes": 577235,
+      "sha256": "164fa3efca59067f4eddcbbb5704c402c300af63d0ed5eec5ab6c77790db0557"
+    }
+  ],
+  "validation": {
+    "status": "pass",
+    "categories": {
+      "bom": 1,
+      "netlist": 3
+    },
+    "required_categories": [
+      "netlist",
+      "bom"
+    ],
+    "missing_categories": [],
+    "warnings": [],
+    "errors": []
+  }
+}

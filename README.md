@@ -14,7 +14,10 @@
 ## 推荐入口
 
 - [`LLM_NAVIGATION.md`](LLM_NAVIGATION.md): 把 GitHub 链接交给其它 LLM 时，优先让它从这里开始读
-- [`03_review_runs/.../judgment_interpretation.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/judgment_interpretation.md): 本轮 raw 审核结果的改版判断口径解释
+- [`04_final_reports/CURRENT.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/CURRENT.md): 当前有效报告入口
+- [`03_review_runs/RUN_INDEX.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/RUN_INDEX.md): 新旧 run 索引，避免旧结果误读
+- [`03_review_runs/.../judgment_interpretation.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md): 本轮 raw 审核结果的改版判断口径解释
+- [`02_design_evidence/architecture_diagrams/`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/): 新旧架构图和生成说明
 - [`02_design_evidence/judgment_mode_correction_20260506.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/judgment_mode_correction_20260506.md): 针对“正确旧图 + 新芯片封装占位”的判断修正
 - [`00_task/revision_brief.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/00_task/revision_brief.md): 改版任务卡
 - [`02_design_evidence/source_vs_target_chip_check.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/source_vs_target_chip_check.md): 源芯片与目标芯片检查

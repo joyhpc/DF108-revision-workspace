@@ -117,7 +117,15 @@ Updated judgment-mode interpretation:
 
 This updated interpretation is recorded in:
 
-`03_review_runs/run-task-20260506-df108-ku040-a5ed052ab32ae2v-intake/judgment_interpretation.md`
+`03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md`
+
+The current valid report pointer is:
+
+`04_final_reports/CURRENT.md`
+
+Architecture diagrams are recorded in:
+
+`02_design_evidence/architecture_diagrams/`
 
 ## Recommended Review Focus
 
