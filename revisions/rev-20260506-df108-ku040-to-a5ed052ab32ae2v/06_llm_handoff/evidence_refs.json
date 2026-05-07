@@ -104,6 +104,25 @@
       "type": "derived_summary",
       "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/source_vs_target_chip_check.md",
       "supports": ["source-vs-target part mismatch summary"]
+    },
+    {
+      "id": "EV-DESIGN-DIRECTION-20260507",
+      "type": "derived_summary",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md",
+      "source_drive_folder": "https://drive.google.com/drive/folders/1LBmcH09JFtY-A9iW-TYNtksNjdZ7o8wS?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto",
+      "reference_files": [
+        "Agilex 5 FPGAs and SoCs Device Overview ug-762191-762192.pdf",
+        "Agilex 5 FPGAs and SoCs Device Data Sheet-ds-813918-813919.pdf",
+        "External Memory Interfaces (EMIF) IP User Guide Agilex 5 FPGAs and SoCs 817467_D842785.pdf",
+        "General-Purpose IO User Guide Agilex 5 FPGAs and SoCs 813934_869633.pdf",
+        "MIPI D-PHY IP User Guide 817561_856924.pdf",
+        "altera-pbc-b32a-a5e.xlsx"
+      ],
+      "supports": [
+        "MIPI direct-to-HSIO design direction",
+        "LPDDR5 3,733 Mbps/pin target for current A5EC052A B32A / E-Series Group A interpretation",
+        "LM5060 migration scope"
+      ]
     }
   ]
 }

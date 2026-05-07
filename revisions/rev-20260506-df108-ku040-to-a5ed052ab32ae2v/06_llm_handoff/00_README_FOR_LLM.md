@@ -21,6 +21,7 @@ Current status: pre-review handoff. This is not schematic sign-off, board-releas
 | `01_design_context.md` | Self-contained design context for another LLM. Start here. |
 | `02_key_facts.md` | Fact table extracted from BOM, PST netlist, opendatasheet, intake, and review outputs. |
 | `03_open_questions.md` | Questions that must be resolved before treating this as an A5ED052AB32AE2V design review. |
+| `04_current_design_direction.md` | 2026-05-07 update: MIPI direct connection, LPDDR5 speed/design target, and LM5060 migration position. |
 | `evidence_refs.json` | Machine-readable evidence index with paths, hashes, and line hints. |
 
 ## Important Correction
@@ -39,6 +40,8 @@ before interpreting raw review output.
 ## How To Use
 
 For a short external LLM session, provide `01_design_context.md` and `02_key_facts.md`.
+
+For the latest design discussion, also provide `04_current_design_direction.md`.
 
 For evidence-sensitive review, also provide `03_open_questions.md` and `evidence_refs.json`.
 

@@ -52,6 +52,27 @@ Local opendatasheet currently provides strong evidence for `A5ED052A_B32A`, but 
 2. Which parts of the reference design are allowed to be copied?
 3. Which parts must be adapted because DF108 preserves existing external interfaces?
 
+## P1: MIPI Direct Connection Closure
+
+1. For each MIPI path, what is the decoder source, connector pin map, lane count, lane rate, clock lane, and target A5EC HSIO bank/lane?
+2. Does the decoder board output a standard MIPI D-PHY CSI-2 electrical interface?
+3. Does the connector plus main-board routing qualify as short/standard channel for `3.5 Gbps/lane`, or should the design target be limited to `2.5 Gbps/lane`?
+4. Which A5EC pins are assigned to MIPI RZQ/refclk and are they free from LPDDR5 EMIF conflicts?
+
+## P1: LPDDR5 EMIF Closure
+
+1. Is the intended memory topology `x32` or `2ch x16`?
+2. Which exact LPDDR5 component and vendor datasheet will be used?
+3. Does Quartus EMIF IP accept the exact A5EC device/package/speed grade at `3,733 Mbps/pin`?
+4. Are address/command lanes, data byte lanes, RZQ, refclk, reset, and bank voltage assignments legal in pin planner?
+5. What lower FSP values should be used for bring-up before attempting the target rate?
+
+## P1: LM5060 Migration Closure
+
+1. What are the old LM5060 circuit parameters and measured/proven operating envelope?
+2. What is the new downstream bulk capacitance and startup load for Agilex 5 + LPDDR5 rails?
+3. Do current limit, timer, hot-swap MOSFET SOA, TVS/fuse/EMI parts, and PG/FLT timing still have margin?
+
 ## P1: Tooling Issue
 
 1. The initial board review hit `DiffPairCheck` missing `pair_name`. Should this be fixed in `sch-review` before relying on board-level findings?

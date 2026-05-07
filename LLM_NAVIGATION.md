@@ -29,6 +29,25 @@ DF108 当前是一个原理图改版验证任务：在既有 DF108 / A38 主控�
 - [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md)
 - [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/judgment_mode_correction_20260506.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/judgment_mode_correction_20260506.md)
 
+## 最新设计方向
+
+2026-05-07 用户新增设计输入：
+
+- MIPI 去掉 HS/LP 切换开关和 buffer，由解码板经连接器后直连 `A5EC052A B32A` 的 MIPI-capable HSIO bank。
+- DDR4 改为 LPDDR5。
+- 电源入口使用成熟 LM5060 方案迁移。
+
+当前设计建议：
+
+- MIPI 直连方案成立，但必须按 Agilex 5 MIPI D-PHY IP、HSIO bank、RZQ/refclk、lane placement 规则处理，不能按普通差分 IO 处理。
+- 对当前 `A5EC052A B32A` / Agilex 5 E-Series Group A 口径，LPDDR5 设计上限按 `3,733 Mbps/pin`，`x32` raw bandwidth 约 `14.93 GB/s`。
+- LM5060 入口电路可结构复用，但要按新 Agilex 5 + LPDDR5 电源树重新核算 current limit、inrush、MOSFET SOA 和 PG/FLT sequencing。
+
+优先读取：
+
+- [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md)
+- [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/04_current_design_direction.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/04_current_design_direction.md)
+
 ## 最小阅读路径
 
 如果只能读取少量文件，按这个顺序读：
@@ -37,12 +56,14 @@ DF108 当前是一个原理图改版验证任务：在既有 DF108 / A38 主控�
 2. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/CURRENT.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/CURRENT.md)
 3. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/RUN_INDEX.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/RUN_INDEX.md)
 4. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/03_review_runs/run-20260507-judgment-v2/judgment_interpretation.md)
-5. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/old_ku040_architecture.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/old_ku040_architecture.md)
-6. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/new_agilex_placeholder_architecture.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/new_agilex_placeholder_architecture.md)
-7. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/00_README_FOR_LLM.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/00_README_FOR_LLM.md)
-8. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/01_design_context.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/01_design_context.md)
-9. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/02_key_facts.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/02_key_facts.md)
-10. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/03_open_questions.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/03_open_questions.md)
+5. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md)
+6. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/old_ku040_architecture.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/old_ku040_architecture.md)
+7. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/new_agilex_placeholder_architecture.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/architecture_diagrams/new_agilex_placeholder_architecture.md)
+8. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/00_README_FOR_LLM.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/00_README_FOR_LLM.md)
+9. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/01_design_context.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/01_design_context.md)
+10. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/02_key_facts.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/02_key_facts.md)
+11. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/03_open_questions.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/03_open_questions.md)
+12. [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/04_current_design_direction.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/04_current_design_direction.md)
 
 这组文件足够让 LLM 建立任务上下文，并知道哪些事实已确认、哪些仍是待确认问题。
 
@@ -52,6 +73,7 @@ DF108 当前是一个原理图改版验证任务：在既有 DF108 / A38 主控�
 
 - [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/00_task/revision_brief.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/00_task/revision_brief.md): 改版任务卡
 - [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/source_vs_target_chip_check.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/source_vs_target_chip_check.md): 源芯片与目标芯片核对
+- [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md): MIPI 直连、LPDDR5、LM5060 迁移方向
 - [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/preflight_validation.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/preflight_validation.md): 输入预检查
 - [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/step1_application_validation_summary.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/step1_application_validation_summary.md): 本轮应用验证摘要
 - [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/schematic_revision_review.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/04_final_reports/schematic_revision_review.md): 原理图改版审核报告
