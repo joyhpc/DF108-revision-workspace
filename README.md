@@ -11,6 +11,52 @@
 - 已知目标方案: `A5ED052AB32AE2V`
 - 当前输入基线: 基于既有 DF108 / A38 主控原理图包，并加入 Agilex 5 方案相关内容
 
+## 给原理图设计人员的使用方式
+
+这个仓库可以当作 DF108 第一版原理图改版的设计控制台使用。它不替代 CAD 原理图，也不宣布 sign-off；它负责告诉你当前哪些页可以画、哪些连接只能占位、哪些结论必须等 Quartus / Pin Planner / 官方资料补证。
+
+当前画图状态：
+
+| 分类 | 状态 |
+|---|---|
+| 已确认 | MIPI 去掉 HS/LP switch 和 buffer，走 decoder board -> connector -> Agilex 5 MIPI-capable HSIO 直连 |
+| 已确认 | LPDDR5 按 `2` 组 x32 颗粒推进，每组一个 LPDDR5 hard memory controller |
+| 已确认 | 24V 电源入口复用成熟 LM5060 拓扑 |
+| 暂定假设 | `A5EC052A B32A` / `A5ED052AB32AE2V` 命名差异先按占位清理项处理 |
+| 待补证 | MIPI lane、LPDDR5 EMIF bank/pin、RZQ/refclk、电源时序、clock/reset/config |
+
+画图时优先打开：
+
+- [`02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv): 第一版资源分配矩阵
+- [`02_design_evidence/current_design_direction_20260507.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md): 当前设计方向解释
+- [`06_llm_handoff/03_open_questions.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/03_open_questions.md): 还不能闭合的问题
+
+建议按资源矩阵的 `schematic_page` 列推进原理图：
+
+| schematic_page | 画图用途 |
+|---|---|
+| `SCH_A5E_SYMBOL` | 主芯片符号分页、A5EC/A5ED 命名占位 |
+| `SCH_MIPI_DIRECT` | 解码板连接器到 Agilex 5 HSIO 的 MIPI 直连 |
+| `SCH_LPDDR5_CTRL0` | 第 1 组 x32 LPDDR5 颗粒和主控资源 |
+| `SCH_LPDDR5_CTRL1` | 第 2 组 x32 LPDDR5 颗粒和主控资源 |
+| `SCH_POWER_ENTRY` | LM5060 入口保护 / hot-swap 迁移 |
+| `SCH_POWER_TREE` | Agilex 5 + 两组 LPDDR5 电源树和 PG/FLT 链 |
+| `SCH_CLOCK_RESET_CONFIG` | MIPI refclk、EMIF refclk、reset、config、JTAG |
+
+资源矩阵里的 `status` 是画图门禁：
+
+| status | 对原理图动作的含义 |
+|---|---|
+| `confirmed` | 可以作为当前事实引用 |
+| `assumed_for_rev1` | 可以用于第一版占位绘制，但正式冻结前仍要复核 |
+| `pending_quartus` | 等 Quartus IP / resource report，不要凭空定 pin 或资源 |
+| `pending_pin_planner` | 等 Pin Planner，不要把 bank / lane 固化 |
+| `pending_datasheet` | 等官方 datasheet 或器件资料 |
+| `pending_reference_design` | 等参考设计或项目级设计决策 |
+| `naming_cleanup` | 先保留占位，正式输出前统一 symbol / BOM / PST 命名 |
+
+每次从 Quartus、Pin Planner、datasheet 或参考设计拿到新证据后，优先回填资源矩阵，再继续画相应页面。这样 GitHub 上能持续看到“当前能画什么、为什么能画、还差什么证据”。
+
 ## 推荐入口
 
 - [`LLM_NAVIGATION.md`](LLM_NAVIGATION.md): 把 GitHub 链接交给其它 LLM 时，优先让它从这里开始读
