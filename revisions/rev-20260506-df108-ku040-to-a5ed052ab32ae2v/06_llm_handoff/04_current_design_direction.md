@@ -10,6 +10,8 @@ It is not schematic sign-off, board-release approval, or a formal design baselin
 2. Connect all MIPI lanes to `A5EC052A B32A` HSIO banks.
 3. Replace DDR4 with LPDDR5.
 4. Use the mature LM5060 input-power circuit and migrate it to this revision.
+5. Completely delete the old `KU040` path in the target Rev1 schematic.
+6. Allocate 168 ordinary decoder-board GPIO signals to adjustable `1.2 V` to `1.8 V` I/O banks.
 
 ## Current Technical Position
 
@@ -64,6 +66,23 @@ Still re-check:
 - TVS/fuse/EMI protection
 - `PG` / `FLT` handoff into the new Agilex 5 power sequencing
 
+### KU040 Removal And Decoder GPIO
+
+Target Rev1 should not keep `U14=XCKU040-2FFVA1156I` as a dual-option controller. Old KU040-owned interfaces must be deleted or reassigned to Agilex 5, MCU, decoder board, or preserved peripheral logic.
+
+The 168 ordinary decoder-board GPIO signals should be planned as four logical groups:
+
+| Group | Count | Target |
+|---|---:|---|
+| `DEC_GPIO_VADJ_G0` | 42 | one HSIO / `VCCIO_PIO` sub-bank |
+| `DEC_GPIO_VADJ_G1` | 42 | one HSIO / `VCCIO_PIO` sub-bank |
+| `DEC_GPIO_VADJ_G2` | 42 | one HSIO / `VCCIO_PIO` sub-bank |
+| `DEC_GPIO_VADJ_G3` | 42 | one HSIO / `VCCIO_PIO` sub-bank |
+
+Use HSIO / `VCCIO_PIO` for `1.2 V` to `1.8 V` adjustable GPIO. Do not assign these signals to exact balls until Quartus Pin Planner confirms the same device can also fit MIPI and both LPDDR5 x32 controller groups.
+
+Important capacity warning: local pinout evidence shows `A5EC052A_B32A` has 8 HSIO sub-banks, while `A5ED052A_B32A` has 4. If final A5ED only exposes four HSIO sub-banks, 168 GPIO consumes nearly all adjustable HSIO capacity before MIPI and LPDDR5 are placed.
+
 ## Decision-Level Summary
 
 The recommended main architecture is:
@@ -84,9 +103,19 @@ External memory
   -> 2 groups of x32 LPDDR5 components
   -> one controller per group
   -> target design capability 3,733 Mbps/pin
+
+Ordinary decoder GPIO
+  -> 168 signals
+  -> 4 groups of 42
+  -> HSIO / VCCIO_PIO adjustable banks
+  -> exact bank/pin pending Quartus Pin Planner
 ```
 
 The current required artifact is `../02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv`, covering MIPI lanes, LPDDR5 EMIF banks, power sequencing, clock/reset dependencies, and final A5EC/A5ED naming cleanup.
+
+GPIO/KU040 deletion evidence:
+
+- `../02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md`
 
 ## Source Files Used
 

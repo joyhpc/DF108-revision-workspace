@@ -135,6 +135,17 @@
         "clock/reset/config resource placeholders",
         "A5EC/A5ED naming cleanup tracking"
       ]
+    },
+    {
+      "id": "EV-GPIO-KU040-20260508",
+      "type": "derived_design_direction",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md",
+      "supports": [
+        "target Rev1 deletes KU040 instead of retaining dual-option ownership",
+        "168 decoder ordinary GPIO signals require adjustable 1.2 V to 1.8 V bank support",
+        "GPIO split into four groups of 42 targeting HSIO VCCIO_PIO sub-banks",
+        "A5EC versus A5ED HSIO capacity risk"
+      ]
     }
   ]
 }

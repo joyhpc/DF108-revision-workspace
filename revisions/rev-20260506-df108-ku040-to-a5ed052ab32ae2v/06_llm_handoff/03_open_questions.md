@@ -18,13 +18,39 @@ The naming issue is no longer a P0 design-error claim for the current placeholde
 
 ## P0: KU040 Coexistence
 
-1. Is `U14=XCKU040-2FFVA1156I` intentionally retained as part of a dual-option schematic?
-2. Or should the target revision remove/replace KU040 after the Agilex path is selected?
-3. If both `U14` and `U9` remain, which one owns each external interface, control signal, clock, reset, DDR, and high-speed lane?
+User clarification on 2026-05-08: target Rev1 should completely delete `U14=XCKU040-2FFVA1156I`; it is not intentionally retained as a dual-option schematic path.
+
+Remaining questions:
+
+1. Which old KU040-owned nets are deleted outright versus reassigned to Agilex 5, MCU, decoder board, or preserved external interface logic?
+2. Which old KU040 power rails, clocks, resets, configuration devices, DDR4 nets, and test points should be removed from the target schematic?
+3. Which historical evidence file is the formal old baseline for proving that all intended peripheral functions survived after KU040 deletion?
 
 Why this matters:
 
-The review cannot decide whether duplicated power rails, control lines, and high-speed nets are errors or intentional migration scaffolding without this architectural boundary.
+Raw input evidence still contains KU040. For target Rev1, duplicated KU040/Agilex ownership should now be treated as migration work to remove or reassign, not as intentional coexistence.
+
+## P0: Decoder GPIO / Adjustable HSIO Capacity
+
+User clarification on 2026-05-08: 168 ordinary GPIO from the decoder board need adjustable bank voltage from `1.2 V` to `1.8 V`.
+
+Current Rev1 allocation assumption:
+
+1. Split 168 GPIO into four groups of 42.
+2. Each group targets one Agilex 5 HSIO / `VCCIO_PIO` sub-bank.
+3. Exact banks and pins are pending Quartus / Pin Planner.
+
+Remaining questions:
+
+1. Does the final exact device use A5EC-like HSIO resources or A5ED SoC resources?
+2. Can Quartus place `MIPI + 2x LPDDR5 x32 + 168 adjustable GPIO` on the exact B32A device/package/speed grade?
+3. What is the decoder board connector pin map and GPIO direction for all 168 signals?
+4. Are all 168 GPIO always at the same VADJ voltage, or do they require independently adjustable bank groups?
+5. If final A5ED has only four HSIO sub-banks, which architecture change will absorb the resource conflict: fewer GPIO, external expander/CPLD, different FPGA variant, different package, or reduced memory/MIPI resource use?
+
+Why this matters:
+
+Local pinout evidence indicates A5EC052A_B32A has 8 HSIO sub-banks, while A5ED052A_B32A has 4 HSIO sub-banks. 168 GPIO alone requires 4 sub-banks when grouped safely, so A5ED may have no adjustable HSIO left for MIPI and LPDDR5.
 
 ## P0: Formal Baseline
 

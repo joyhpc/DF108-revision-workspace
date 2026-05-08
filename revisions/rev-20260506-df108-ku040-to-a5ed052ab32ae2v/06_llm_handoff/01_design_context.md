@@ -8,6 +8,8 @@ The user's intended task is a main-controller replacement style derivative desig
 - intended new main chip: Intel/Altera Agilex 5 `A5ED052AB32AE2V`;
 - high-level migration statement: `KU040 -> Agilex 5`;
 - board-level constraint: keep the DF108 peripheral domain unchanged, including 8 FAKRA channels, POC, DPS, mechanical enclosure constraints, and optical-port physical form factor.
+- 2026-05-08 clarification: target Rev1 should completely delete the old KU040 path; `U14` is not retained as a dual-option controller.
+- 2026-05-08 clarification: 168 ordinary decoder-board GPIO signals require adjustable `1.2 V` to `1.8 V` I/O bank support.
 
 This is not simply replacing one IC symbol. It is a main-controller migration task. The review must consider power tree, reset, configuration/boot, high-speed transceiver lanes, DDR/memory interface, HPS usage, control interfaces, and whether the old external interface domain is preserved.
 
@@ -105,7 +107,7 @@ Important caveat:
 
 One P0 item is a tool exception: `Board review failed: 'DiffPairCheck' object has no attribute 'pair_name'`. This should be treated as a tool issue, not as a board design defect.
 
-The remaining P0 items are mostly power-tree and IC supply/grounding findings. These need engineering triage in the context of the current schematic being a dual-scheme or intermediate draft with both `U14` KU040 and `U9` Agilex present.
+The remaining P0 items are mostly power-tree and IC supply/grounding findings. The raw input still contains both `U14` KU040 and `U9` Agilex evidence, but the target Rev1 direction has changed: KU040 should be deleted, and old KU040-owned nets must be removed or reassigned rather than treated as intentional dual-scheme coexistence.
 
 Updated judgment-mode interpretation:
 

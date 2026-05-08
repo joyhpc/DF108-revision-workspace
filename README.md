@@ -21,14 +21,17 @@
 |---|---|
 | 已确认 | MIPI 去掉 HS/LP switch 和 buffer，走 decoder board -> connector -> Agilex 5 MIPI-capable HSIO 直连 |
 | 已确认 | LPDDR5 按 `2` 组 x32 颗粒推进，每组一个 LPDDR5 hard memory controller |
+| 已确认 | 目标第一版需要完全删除 `KU040`，不再作为 dual-option 保留 |
+| 已确认 | 解码板过来的 `168` 路普通 GPIO 按 4 组可调 HSIO/VCCIO_PIO bank 占位 |
 | 已确认 | 24V 电源入口复用成熟 LM5060 拓扑 |
 | 暂定假设 | `A5EC052A B32A` / `A5ED052AB32AE2V` 命名差异先按占位清理项处理 |
-| 待补证 | MIPI lane、LPDDR5 EMIF bank/pin、RZQ/refclk、电源时序、clock/reset/config |
+| 待补证 | MIPI lane、LPDDR5 EMIF bank/pin、168 GPIO exact bank/pin、RZQ/refclk、电源时序、clock/reset/config |
 
 画图时优先打开：
 
 - [`02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv): 第一版资源分配矩阵
 - [`02_design_evidence/current_design_direction_20260507.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md): 当前设计方向解释
+- [`02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md): KU040 删除与 168 路 GPIO bank 分配判断
 - [`06_llm_handoff/03_open_questions.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/03_open_questions.md): 还不能闭合的问题
 
 建议按资源矩阵的 `schematic_page` 列推进原理图：
@@ -37,6 +40,7 @@
 |---|---|
 | `SCH_A5E_SYMBOL` | 主芯片符号分页、A5EC/A5ED 命名占位 |
 | `SCH_MIPI_DIRECT` | 解码板连接器到 Agilex 5 HSIO 的 MIPI 直连 |
+| `SCH_DECODER_GPIO_VADJ` | 解码板 168 路普通 GPIO，4 组可调 HSIO/VCCIO_PIO bank |
 | `SCH_LPDDR5_CTRL0` | 第 1 组 x32 LPDDR5 颗粒和主控资源 |
 | `SCH_LPDDR5_CTRL1` | 第 2 组 x32 LPDDR5 颗粒和主控资源 |
 | `SCH_POWER_ENTRY` | LM5060 入口保护 / hot-swap 迁移 |

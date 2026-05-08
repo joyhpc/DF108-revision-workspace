@@ -50,6 +50,7 @@
 | C/D package handling | package unified at this stage |
 | name mismatch | to be corrected later |
 | judgment impact | do not convert raw review errors directly into confirmed schematic design errors |
+| 2026-05-08 KU040 handling | target Rev1 should completely delete `U14=XCKU040-2FFVA1156I`; no dual-option KU040/Agilex ownership |
 
 ## Opendatasheet Facts
 
@@ -100,8 +101,12 @@ The current schematic input cannot yet be treated as formal `A5ED052AB32AE2V` si
 | LPDDR5 Rev1 topology | 2 groups of x32 LPDDR5 components; one LPDDR5 hard memory controller per group |
 | LPDDR5 raw bandwidth | `x16` about `7.46 GB/s`; `x32` about `14.93 GB/s` |
 | LPDDR5 caution | higher EMIF parameter choices are not automatically valid for the exact device/package/speed grade |
+| decoder ordinary GPIO | 168 non-high-speed GPIO from decoder board require adjustable `1.2 V` to `1.8 V` bank support |
+| GPIO Rev1 allocation | split into 4 groups of 42 GPIO; each group targets one HSIO / `VCCIO_PIO` sub-bank; exact bank/pin pending Pin Planner |
+| GPIO capacity caution | local pinout JSON shows `A5EC052A_B32A` has 8 HSIO sub-banks while `A5ED052A_B32A` has 4; A5ED may not fit 168 GPIO plus MIPI plus 2x LPDDR5 x32 |
 | input power | migrate mature LM5060 front-end circuit |
 | LM5060 caution | reuse topology, but re-check UV/OV, current limit, MOSFET SOA, inrush, downstream capacitance, and PG/FLT sequencing |
 | current artifact | `../02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv` covering MIPI, LPDDR5 EMIF, power, clock/reset, and final naming |
+| GPIO allocation evidence | `../02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md` |
 
 Reference files used for this update came from the user-provided Drive folder `1LBmcH09JFtY-A9iW-TYNtksNjdZ7o8wS`, including Agilex 5 Device Overview, Device Data Sheet, EMIF IP User Guide, General-Purpose IO User Guide, MIPI D-PHY IP User Guide, and `altera-pbc-b32a-a5e.xlsx`.
