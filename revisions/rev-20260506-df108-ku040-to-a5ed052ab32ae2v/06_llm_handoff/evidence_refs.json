@@ -146,6 +146,17 @@
         "GPIO split into four groups of 42 targeting HSIO VCCIO_PIO sub-banks",
         "A5EC versus A5ED HSIO capacity risk"
       ]
+    },
+    {
+      "id": "EV-SCH-REV1-EXECUTION-PLAN-20260511",
+      "type": "execution_constraint",
+      "path": "/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/05_schematic_rev1_execution_plan.md",
+      "supports": [
+        "load-on-demand constraints for fast first-version schematic assistance",
+        "4-day Rev1 drawing plan with 4-5 day management-facing range",
+        "required response shape: current design state plus technical and decision layers",
+        "unknowns that must remain pending Quartus, Pin Planner, official datasheet, or reference-design confirmation"
+      ]
     }
   ]
 }
