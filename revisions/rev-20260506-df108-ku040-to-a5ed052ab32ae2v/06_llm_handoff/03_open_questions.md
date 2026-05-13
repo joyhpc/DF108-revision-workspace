@@ -40,13 +40,24 @@ Current Rev1 allocation assumption:
 2. Each group targets one Agilex 5 HSIO / `VCCIO_PIO` sub-bank.
 3. Exact banks and pins are pending Quartus / Pin Planner.
 
+2026-05-12 GPIO resource assessment update:
+
+1. LPDDR5/MIPI are already treated as assigned in HSIO for the current planning premise.
+2. QSFP high-speed side is already treated as assigned in GTS; GTS ordinary low-speed GPIO resource is counted as `0`.
+3. Ordinary low-speed GPIO total demand is `205`: decoder board `168` plus 3.3 V low-speed control GPIO `37`.
+4. Counted remaining GPIO resource is `256`, giving count-only theoretical margin `51`.
+5. This margin is not voltage-domain closure. Strict adjustable `1.2 V` to `1.8 V` decoder GPIO still depends on 3B right, HVIO bank granularity, and Pin Planner/Fitter evidence.
+6. GitHub-readable summary: `../02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.md`; Excel evidence: `../02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.xlsx`.
+
 Remaining questions:
 
 1. Does the final exact device use A5EC-like HSIO resources or A5ED SoC resources?
 2. Can Quartus place `MIPI + 2x LPDDR5 x32 + 168 adjustable GPIO` on the exact B32A device/package/speed grade?
 3. What is the decoder board connector pin map and GPIO direction for all 168 signals?
 4. Are all 168 GPIO always at the same VADJ voltage, or do they require independently adjustable bank groups?
-5. If final A5ED has only four HSIO sub-banks, which architecture change will absorb the resource conflict: fewer GPIO, external expander/CPLD, different FPGA variant, different package, or reduced memory/MIPI resource use?
+5. Is HSIO 3B right half truly available as decoder VADJ resource, or does VDDIO / mux / package placement block it?
+6. How many HVIO pins remain after applying bank VCCIO granularity and reserving the 37 3.3 V control GPIO?
+7. If final A5ED has only four HSIO sub-banks, which architecture change will absorb the resource conflict: fewer GPIO, external expander/CPLD, different FPGA variant, different package, or reduced memory/MIPI resource use?
 
 Why this matters:
 

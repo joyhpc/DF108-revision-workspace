@@ -109,4 +109,20 @@ The current schematic input cannot yet be treated as formal `A5ED052AB32AE2V` si
 | current artifact | `../02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv` covering MIPI, LPDDR5 EMIF, power, clock/reset, and final naming |
 | GPIO allocation evidence | `../02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md` |
 
+## 2026-05-12 Low-Speed GPIO Assessment Facts
+
+| Field | Value |
+|---|---|
+| current high-speed resource premise | LPDDR5/MIPI already assigned in HSIO; QSFP high-speed side already assigned in GTS |
+| ordinary low-speed GPIO demand | `205` |
+| decoder board GPIO within demand | `168`, requiring VDDIO configurable from `1.2 V` to `1.8 V` unless requirement is explicitly changed |
+| 3.3 V low-speed control GPIO within demand | `37`, preferred resource is HVIO |
+| counted remaining GPIO resource | `256` |
+| theoretical count-only margin | `51` |
+| GTS ordinary low-speed GPIO resource | `0` |
+| important boundary | Count surplus does not equal voltage-domain closure or sign-off |
+| strict adjustable blockers | 3B right VDDIO/mux/package confirmation, HVIO bank granularity, Pin Planner and Fitter |
+| Markdown summary | `../02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.md` |
+| Excel evidence | `../02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.xlsx` |
+
 Reference files used for this update came from the user-provided Drive folder `1LBmcH09JFtY-A9iW-TYNtksNjdZ7o8wS`, including Agilex 5 Device Overview, Device Data Sheet, EMIF IP User Guide, General-Purpose IO User Guide, MIPI D-PHY IP User Guide, and `altera-pbc-b32a-a5e.xlsx`.

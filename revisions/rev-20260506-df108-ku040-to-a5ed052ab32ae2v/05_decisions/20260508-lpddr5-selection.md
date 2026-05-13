@@ -12,6 +12,37 @@
 | Review date | 2026-05-13 |
 | Record status | selected-not-frozen |
 
+## Current Conclusion / Freeze Boundary
+
+Current conclusion: proceed with Micron `MT62F1G32D2DS-020 WT:D` as the primary LPDDR5X/LPDDR5 validation candidate only. This is `selected-not-frozen`, not schematic/BOM/pin-list/package/PCB-constraint freeze and not project sign-off.
+
+Why it cannot freeze yet:
+
+| Blocker | Status | Owner | Required next evidence |
+|---|---|---|---|
+| Capacity change from planned 2 x 2GB to 2 x 4GB, total 8GB | `blocked` | Project owner / 罗奇军 | Written requirement-change approval or rejection covering cost, software, initialization, power, and thermal impact. |
+| Exact Micron supplier evidence | `TBD-evidence` | Procurement | Lifecycle/PCN/EOL posture, `WT:D` temperature/supply grade, sample lead, MP lead, price ladder, MOQ/MPQ, and derating guidance for 3733 Mbps/pin. |
+| Full resource coexistence | `TBD-evidence` | Logic / 吴志安 | Quartus EMIF export, Pin Planner output, Fitter report, QSF/pin report, and conflict statement for `MIPI + 2x LPDDR5 x32 + 168 adjustable GPIO`. |
+| Package/library/SI/PI implementation | `TBD-evidence` | Hardware | 315-ball TFBGA DS symbol, footprint, pinout, escape, rails, RZQ/ZQ, refclk, reset, ODT/VREF handling, SI/PI and layout feasibility evidence. |
+| Confirmed backup or accepted single-source risk | `blocked` | Procurement + project owner | Formal Samsung/Hynix/other backup evidence or explicit project risk acceptance. |
+
+## Decision-Layer Snapshot
+
+| PM question | Current answer | Business impact |
+|---|---|---|
+| Can procurement continue with Micron? | Yes, as the primary validation candidate. | Procurement can request formal quote/lifecycle/grade evidence against one exact PN. |
+| Can the project freeze memory now? | No. | Freezing now risks BOM churn, schematic/library rework, and possible architecture reopen if Quartus cannot place the full system. |
+| What is the key schedule risk? | Quartus may fail the combined `MIPI + 2x LPDDR5 x32 + adjustable GPIO` placement, or the 8GB capacity change may be rejected. | Either result can push the team back to architecture or supplier selection before schematic freeze. |
+
+## Technical-Layer Snapshot
+
+| Engineering item | Current technical status | Evidence needed before freeze |
+|---|---|---|
+| Candidate PN | Micron `MT62F1G32D2DS-020 WT:D`, 32Gb / 4GB x32 LPDDR5X/LPDDR5 data-interface direction. | Formal supplier and vendor evidence for exact ordering code and grade. |
+| Target operation | Agilex 5 direction currently uses 3733 Mbps/pin target; part rating is higher. | Supplier derating guidance plus exact-device Quartus EMIF validation. |
+| Architecture dependency | LPDDR5 decision depends on same HSIO resource pool as MIPI and decoder GPIO. | Full Pin Planner/Fitter closure with all interfaces present, not standalone memory IP only. |
+| Freeze state | No schematic pin list, BOM, footprint, QSF, package or PCB constraint freeze. | Project signoff plus supplier, Quartus, hardware library, SI/PI and layout evidence. |
+
 ## Decision Objective
 
 Decide whether DF108 should proceed with a primary LPDDR5/LPDDR5X component for procurement and engineering validation before schematic/BOM/pin-list freeze.
@@ -187,7 +218,7 @@ The current best engineering path is:
 | Firmware / logic / software impact accepted | Owner signoff or linked change record | Logic + software + project owner | TBD-evidence | 8GB total impact and initialization plan not accepted. |
 | Substitute or mitigation path recorded | Backup candidate or explicit risk acceptance | Procurement + project owner | blocked | No confirmed backup; Samsung 315FBGA remains watchlist. |
 | Open risks have owners and review dates | Risk register | Hardware | pass | This record assigns owners and dates. |
-| Project record location created | Saved decision artifact and index pointer | Hardware | pass | This file is the project decision artifact. Workspace index pointer has been added in `/home/ubuntu/workspace/CONTEXT_INDEX.md`. |
+| Project record location created | Saved decision artifact and index pointer | Hardware | pass | This file is the project decision artifact. Revision-level index points to this file. |
 
 Freeze recommendation: blocked for freeze, selected-not-frozen for validation.
 
@@ -195,15 +226,15 @@ Freeze recommendation: blocked for freeze, selected-not-frozen for validation.
 
 Saved project record:
 
-`/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/05_decisions/20260508-lpddr5-selection.md`
+`05_decisions/20260508-lpddr5-selection.md`
 
 Related selection map:
 
-`/home/ubuntu/hardware-projects/prj/DF108/revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/05_decisions/20260508-lpddr5-selection-map.md`
+`05_decisions/20260508-lpddr5-selection-map.md`
 
-Workspace index pointer:
+Revision index pointer:
 
-`CONTEXT_INDEX.md` -> A38 / DF108 / Agilex 5 -> LPDDR5 selection decision.
+`../README.md` -> LPDDR5 selection decision.
 
 ## Next Actions
 

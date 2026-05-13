@@ -12,6 +12,29 @@
 | Map owner | Hardware owner, with procurement and logic inputs |
 | Review date | 2026-05-13 |
 
+## Current Map Readout
+
+This map should be read as a `selected-not-frozen` navigation layer. It helps reviewers see which evidence route can move Micron forward, which routes are rejected or watchlist only, and which gates still block formal freeze.
+
+### Decision Layer
+
+| Question | Current answer | Owner | Next step |
+|---|---|---|---|
+| What is selected now? | Micron `MT62F1G32D2DS-020 WT:D` is the primary validation route. | Hardware + procurement | Continue supplier evidence collection and engineering validation. |
+| What is not selected? | No confirmed backup exists. Samsung 315FBGA and Henry/Hynix remain watchlist only. | Procurement | Promote only after formal exact-PN, lifecycle, package and commercial evidence exists. |
+| Why is freeze blocked? | Capacity change, supplier evidence, toolchain placement, package/SI/PI evidence, and backup/single-source risk are not closed. | Project owner + procurement + logic + hardware | Close gates in the open evidence ledger before schematic/BOM/pin freeze. |
+| What could reopen architecture? | If Quartus cannot place `MIPI + 2x LPDDR5 x32 + 168 adjustable GPIO` on the final B32A target. | Logic + hardware + project owner | Run combined EMIF, Pin Planner and Fitter validation, not standalone memory validation. |
+
+### Technical Layer
+
+| Route / evidence area | Current technical status | Status |
+|---|---|---|
+| Micron exact PN | Exact PN exists and is usable for validation inputs. | `selected-not-frozen` |
+| 2GB original requirement | Current viable route is 4GB per component, so original 2GB-per-component baseline is not satisfied. | `blocked` until project owner decision |
+| Derated operation | 9600 Mb/s per-pin part may be evaluated at 3733 Mbps/pin. | `TBD-evidence` until supplier guidance and Quartus pass |
+| Full resource coexistence | MIPI, two x32 LPDDR5 groups, and 168 adjustable GPIO are not proven together. | `TBD-evidence` / P0 risk |
+| Formal freeze / sign-off | Not reached by this map. | not frozen |
+
 ## Map Purpose
 
 This map is the navigation layer for continuing the LPDDR5/LPDDR5X selection. It does not replace the decision record. It preserves the source routes, candidate funnel, rejection reasons, evidence gaps, evidence-acquisition channels, and tool-validation path needed to move the current `selected-not-frozen` decision toward freeze or back to architecture review.

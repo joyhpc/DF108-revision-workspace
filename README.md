@@ -11,6 +11,21 @@
 - 已知目标方案: `A5ED052AB32AE2V`
 - 当前输入基线: 基于既有 DF108 / A38 主控原理图包，并加入 Agilex 5 方案相关内容
 
+## 当前远端审核入口
+
+远端审核优先打开 revision 级索引：
+
+- [`revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/README.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/README.md): 当前状态、GPIO/LPDDR5 入口、design evidence、handoff/open questions 的集中索引
+
+当前不要越界解释：
+
+| 主题 | 当前状态 | 边界 |
+|---|---|---|
+| LPDDR5 | `selected-not-frozen` | Micron `MT62F1G32D2DS-020 WT:D` 是主验证候选，不是 BOM / pin / footprint freeze。 |
+| GPIO 低速资源 | `TBD-evidence` | 低速 GPIO 总需求 `205`，可统计资源 `256`，理论余量 `51`；这不是电压域闭环。 |
+| 解码板 VDDIO | `blocked` / `TBD-evidence` | `168` 路若必须支持 `1.2 V` 到 `1.8 V` 全范围可调，需先确认 3B right、HVIO bank 粒度和 Pin Planner/Fitter。 |
+| Formal freeze / sign-off | 未达到 | 本仓库当前不宣布 LPDDR5、GPIO、原理图或发板 sign-off。 |
+
 ## 给原理图设计人员的使用方式
 
 这个仓库可以当作 DF108 第一版原理图改版的设计控制台使用。它不替代 CAD 原理图，也不宣布 sign-off；它负责告诉你当前哪些页可以画、哪些连接只能占位、哪些结论必须等 Quartus / Pin Planner / 官方资料补证。
@@ -22,16 +37,22 @@
 | 已确认 | MIPI 去掉 HS/LP switch 和 buffer，走 decoder board -> connector -> Agilex 5 MIPI-capable HSIO 直连 |
 | 已确认 | LPDDR5 按 `2` 组 x32 颗粒推进，每组一个 LPDDR5 hard memory controller |
 | 已确认 | 目标第一版需要完全删除 `KU040`，不再作为 dual-option 保留 |
-| 已确认 | 解码板过来的 `168` 路普通 GPIO 按 4 组可调 HSIO/VCCIO_PIO bank 占位 |
+| 当前口径 | 普通低速 GPIO 总需求 `205`；其中解码板 `168` 路，3.3V 控制 GPIO `37` 路 |
+| 当前口径 | LPDDR5/MIPI 已在 HSIO 内 assign；QSFP 高速侧已在 GTS assign；GTS 普通低速 GPIO 按 `0` 处理 |
 | 已确认 | 24V 电源入口复用成熟 LM5060 拓扑 |
 | 暂定假设 | `A5EC052A B32A` / `A5ED052AB32AE2V` 命名差异先按占位清理项处理 |
-| 待补证 | MIPI lane、LPDDR5 EMIF bank/pin、168 GPIO exact bank/pin、RZQ/refclk、电源时序、clock/reset/config |
+| 待补证 | MIPI lane、LPDDR5 EMIF bank/pin、GPIO exact bank/pin、RZQ/refclk、电源时序、clock/reset/config |
+| 待补证 | 解码板 `168` 路 `1.2 V` 到 `1.8 V` 可调 VDDIO 语义、3B right、HVIO bank 粒度、Pin Planner/Fitter |
 
 画图时优先打开：
 
 - [`02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/a5ec052a_b32a_resource_allocation_matrix_20260507.csv): 第一版资源分配矩阵
+- [`02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.md): GitHub 可预览的低速 GPIO 资源评估摘要
+- [`02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.xlsx`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/a38_a5ec052a_b32_low_speed_gpio_resource_assessment_20260512.xlsx): 低速 GPIO Excel 证据表
 - [`02_design_evidence/current_design_direction_20260507.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/current_design_direction_20260507.md): 当前设计方向解释
 - [`02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/02_design_evidence/ku040_removal_gpio_bank_allocation_20260508.md): KU040 删除与 168 路 GPIO bank 分配判断
+- [`05_decisions/20260508-lpddr5-selection.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/05_decisions/20260508-lpddr5-selection.md): LPDDR5 selected-not-frozen 决策记录
+- [`05_decisions/20260508-lpddr5-selection-map.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/05_decisions/20260508-lpddr5-selection-map.md): LPDDR5 selection map
 - [`06_llm_handoff/03_open_questions.md`](revisions/rev-20260506-df108-ku040-to-a5ed052ab32ae2v/06_llm_handoff/03_open_questions.md): 还不能闭合的问题
 
 建议按资源矩阵的 `schematic_page` 列推进原理图：
